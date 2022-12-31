@@ -9,6 +9,7 @@ class AdvancedDrawer extends StatefulWidget {
     this.controller,
     this.backdropColor,
     this.childCoverColor,
+    this.splashColor,
     this.openRatio = 0.75,
     this.openScale = 0.85,
     this.animationDuration = const Duration(milliseconds: 250),
@@ -34,6 +35,9 @@ class AdvancedDrawer extends StatefulWidget {
 
   /// Child cover color. (Opacity animation as the child slides)
   final Color? childCoverColor;
+
+  /// Splash color. (aka the ripple effect color)
+  final Color? splashColor;
 
   /// Opening ratio.
   final double openRatio;
@@ -183,6 +187,7 @@ class _AdvancedDrawerState extends State<AdvancedDrawer>
                                 child: InkWell(
                                   onTap: _controller.hideDrawer,
                                   highlightColor: Colors.transparent,
+                                  splashColor: widget.splashColor,
                                   child: Container(),
                                 ),
                               );
