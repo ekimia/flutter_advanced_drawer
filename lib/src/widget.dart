@@ -135,7 +135,7 @@ class _AdvancedDrawerState extends State<AdvancedDrawer>
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Container(
       color: widget.backdropColor,
       child: GestureDetector(
         onHorizontalDragStart:
@@ -182,15 +182,14 @@ class _AdvancedDrawerState extends State<AdvancedDrawer>
                                 return const SizedBox();
                               }
 
-                              return Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  onTap: _controller.hideDrawer,
-                                  highlightColor: Colors.transparent,
-                                  splashColor: widget.splashColor,
-                                  child: Container(),
+                              return GestureDetector(
+                                onTap: _controller.hideDrawer,
+                                child: Container(
+                                  decoration:
+                                      const BoxDecoration(color: Colors.transparent),
                                 ),
                               );
+
                             },
                           ),
                           FadeTransition(
