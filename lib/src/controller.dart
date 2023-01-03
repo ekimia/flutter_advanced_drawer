@@ -13,9 +13,14 @@ class AdvancedDrawerController extends ValueNotifier<AdvancedDrawerValue> {
   }
 
   /// Hides drawer.
-  void hideDrawer() {
+  void hideDrawer({VoidCallback? completion}) {
     value = AdvancedDrawerValue.hidden();
     notifyListeners();
+    // Subpar, but for now let's some time by delaying the callback by the animation duration
+    // so the consumer knows when the drawer is actually hidden.
+    Future.delayed(const Duration(milliseconds: 250), () {
+      completion?.call();
+    });
   }
 
   /// Toggles drawer.
